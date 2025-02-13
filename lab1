@@ -1,1 +1,9 @@
-
+#Primary key : Uniquely identifiable elements
+#Foreign Key: To maintain redundancy
+1)Book:Book ID,TITLE,PUBLISHER_NAME,PUB_YEAR
+2)Book authors:BOOK ID,AUTHOR_NAME
+3)Publisher:PUBLISHER_NAME,ADDRESS,PHONE
+4)Book_Copies:BOOK_ID,BRANCH_ID,NO_OF_COPIES
+5)Book_Lending:BOOK_ID,BRANCH_ID,CARD_NO,DATE OUT,DUE DATE
+6)Library_Branch:BRANCH_ID,BRANCH_NAME,ADDRESS
+7)Card:CARD_NO
