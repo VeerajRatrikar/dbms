@@ -30,3 +30,11 @@ ex: update student set section='d' where usn='1';
 alter table table_name add var_name datatype;
 delete from table_name where value='';
 delete table table_name;
+
+
+INSERT:
+insert into PUBLISHER values('kid','6438393873','BANGALORE');
+insert into PUBLISHER values('&name',&phone,'&address');
+
+insert into BOOK values(&BOOK_ID,'&TITLE','&PUB_YEAR','&PUBLISHER_NAME');
+
