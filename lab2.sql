@@ -24,3 +24,10 @@ Salesman_ID references Salesman(Salesman_ID) on delete set null
 );
 
 insert into Orders values(&Ord_No,'&Purchase','&Ord_Date',&Customer_ID,&Salesman_ID);
+
+Questions:
+1)Select grade,count(cust_id) from your Customer group by having grade>(select avg(grade)) from customer where city='Banglore';
+2)Select salesman_id,name from salesman A where 1<(select count(*) from customer C where  C.salesman_id = A.salesman_id);
+3)Select s.salesman_id,name,customer,commission from salesman s , customer C where s.city=C.city
+    UNION   
+  Select s.salesman,no_math,customer,commission from Salesman s,Customer C where Not city = any(select city from )
