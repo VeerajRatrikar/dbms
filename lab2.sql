@@ -15,3 +15,12 @@ Salesman_ID references Salesman(Salesman_ID) on delete set null
 );
 
 insert into Customer values(&Customer_ID,'&Cust_Name','&City',&Grade,&Salesman_ID);
+
+create table Orders(Ord_No int primary key,
+Purchase_Amt Number,
+Ord_Date date,
+Customer_ID references Customer(Customer_ID)on delete set null,
+Salesman_ID references Salesman(Salesman_ID) on delete set null
+);
+
+insert into Orders values(&Ord_No,'&Purchase','&Ord_Date',&Customer_ID,&Salesman_ID);
