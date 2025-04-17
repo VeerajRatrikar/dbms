@@ -30,3 +30,39 @@ Select Distinct F.Fname , count(*) as CourseCount from CLass C , Faculty F where
 F.Fid group by F.Fname;
 
 e) Create a view that contains the details of students along with the name of the courses enrolled
+
+
+->SELECT DISTINCT S.SNUM, S.SNAME FROM STUDENT1 S, CLASS C, ENROLLED E, FACULTY F WHERE S.SNUM = E.SNUM AND E.CNAME = C.CNAME AND C.FID = F.FID AND F.FNAME = 'Rakesh' AND S.LEV = 'JR' ORDER BY S.SNUM;
+->SELECT MAX(S.AGE) AS AGE FROM STUDENT1 S WHERE (S.MAJOR = 'History') OR S.SNUM IN 
+(SELECT E.SNUM FROM CLASS C, ENROLLED E, FACULTY F WHERE E.CNAME = C.CNAME AND C.FID = F.FID AND F.FNAME = 'Ravi');
+      AGE
+---------
+
+
+->SELECT DISTINCT S.SNAME FROM STUDENT1 S WHERE S.SNUM IN (SELECT E1.SNUM FROM ENROLLED E1, ENROLLED E2, CLASS C1, CLASS C2 WHERE 
+E1.SNUM = E2.SNUM AND E1.CNAME <> E2.CNAME AND E1.CNAME = C1.CNAME AND E2.CNAME = C2.CNAME AND C1.MEETSAT = C2.MEETSAT);
+SNAME
+-----------
+ZOLA
+HELEN
+->SELECT DISTINCT F.FNAME, COUNT(*) AS COURSECOUNT FROM CLASS C, FACULTY F WHERE C.FID NOT IN 
+(SELECT FID FROM CLASS WHERE ROOM IN (SELECT ROOM FROM CLASS WHERE ROOM != 'R128')) AND C.FID = F.FID GROUP BY F.FNAME;
+FNAME                COURSECOUNT
+-------------------- -----------
+JANE                           2
+KERA                           2
+
+->CREATE VIEW STUDENT_COURSES AS SELECT S.SNUM, S.SNAME, C.CNAME FROM STUDENT1 S, ENROLLED E, CLASS C WHERE S.SNUM = E.SNUM AND E.CNAME = C.CNAME;
+      SNUM SNAME                CNAME
+---------- -------------------- -----------------
+         1 ANDY                 CS262
+         1 ANDY                 AR32
+         2 HELEN                AR32
+         2 HELEN                PY331
+         3 BOB                  PY331
+         3 BOB                  HIS34
+         5 ZOLA                 CS293
+         6 ABHI                 CS262
+         4 PHAN                 HIS38
+         5 ZOLA                 HIS38
+
